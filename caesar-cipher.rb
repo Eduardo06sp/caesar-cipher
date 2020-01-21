@@ -11,12 +11,15 @@ uppercase_alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"
 new_string = []
 
 original_string.each do |character|
+
   if lowercase_alphabet.include?(character)
     character_index = lowercase_alphabet.index(character)
     new_string.push(lowercase_alphabet[character_index + encryption_key])
+
   elsif uppercase_alphabet.include?(character)
     character_index = uppercase_alphabet.index(character)
     new_string.push(uppercase_alphabet[character_index + encryption_key])
+
   else
     new_string.push(character)
   end
