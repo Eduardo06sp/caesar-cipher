@@ -11,14 +11,31 @@ uppercase_alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"
 new_string = []
 
 original_string.each do |character|
+  count = encryption_key
 
   if lowercase_alphabet.include?(character)
     character_index = lowercase_alphabet.index(character)
-    new_string.push(lowercase_alphabet[character_index + encryption_key])
-
   elsif uppercase_alphabet.include?(character)
     character_index = uppercase_alphabet.index(character)
-    new_string.push(uppercase_alphabet[character_index + encryption_key])
+  end
+
+  if (character_index)
+    while count > 0
+      if character_index < 25
+        character_index += 1
+      else
+        character_index = 0
+      end
+
+      count -= 1
+    end
+  end
+
+  if lowercase_alphabet.include?(character)
+    new_string.push(lowercase_alphabet[character_index])
+
+  elsif uppercase_alphabet.include?(character)
+    new_string.push(uppercase_alphabet[character_index])
 
   else
     new_string.push(character)
